@@ -1,0 +1,133 @@
+<div style="text-align:right; font-size:10px;">
+  {{>choixLettre}}
+</div>
+
+<div style="text-align:left">
+  <div>
+    <a href="/images/vip/{{vip.0.PHOTO_ADRESSE}}"><img class="display_IB margin-L_10" alt="photo" src="/images/vip/{{vip.0.PHOTO_ADRESSE}}"></a>
+    <div class="display_IB vertical-A_top" >
+    <p class="margin-L_3 padding-B_5"><strong>Nom : </strong>{{vip.0.VIP_PRENOM}} {{vip.0.VIP_NOM}}</p>
+    <p class="margin-L_3 padding-B_5"><strong>Date de naissance : </strong>{{formatDate vip.0.VIP_NAISSANCE 'dddd D MMMM YYYY'}}</p>
+    <p class="margin-L_3 padding-B_5"><strong>Nationalité : </strong>{{vip.0.NATIONALITE_NOM}}</p>
+  </div>
+  </div>
+  {{#if acteur.ACTEUR_DATEDEBUT}}
+    <div class="padding-T_5">
+      <p><strong>Profession : </strong> {{#ifCond  vip.0.VIP_SEXE '==' 'M'}}Acteur{{else}}Actrice{{/ifCond}}</p>
+      <p><strong>Principal(aux) film(s) :</strong></p>
+      <div class="margin-L_10">
+        {{#each acteurFilm}}
+          <div>
+            {{this.FILM_TITRE}} ({{formatDate this.FILM_DATEREALISATION 'MMMM YYYY'}})
+            {{#if this.VIP_NUMERO}}
+              de {{>infoBulle}}
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if realisateurFilm}}
+    <div class="padding-T_5">
+      <p class="display_I"><strong>Profession : </strong> {{#ifCond  vip.0.VIP_SEXE '==' 'M'}}Realisateur{{else}}Realisatrice{{/ifCond}}</p>
+      <p><strong>Principal(aux) film(s) :</strong></p>
+      <div class="margin-L_10">
+        {{#each realisateurFilm}}
+          {{this.FILM_TITRE}} ({{formatDate this.FILM_DATEREALISATION 'MMMM YYYY'}})
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if couturierDefile}}
+    <div class="padding-T_5">
+      <p class="display_I"><strong>Profession : </strong> {{#ifCond  vip.0.VIP_SEXE '==' 'M'}}Couturier{{else}}Couturière{{/ifCond}}</p>
+      <p><strong>Principal(aux) défilé(s) :</strong></p>
+      <div class="margin-L_10">
+        {{#each couturierDefile}}
+          <p>{{this.DEFILE_LIEU}} ({{formatDate this.DEFILE_DATE 'MMMM YYYY'}})</p>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if chanteur.CHANTEUR_SPECIALITE}}
+    <div class="padding-T_5">
+      <p class="display_I"><strong>Profession : </strong> {{#ifCond  vip.0.VIP_SEXE '==' 'M'}}Chanteur{{else}}Chanteuse{{/ifCond}} ({{chanteur.CHANTEUR_SPECIALITE}})</p>
+      <p><strong>Principal(aux) album(s) :</strong></p>
+      <div class="margin-L_10">
+        {{#each chanteurAlbum}}
+          <p>{{this.ALBUM_TITRE}} ({{formatDate this.ALBUM_DATE 'MMMM YYYY'}}) avec {{this.MAISONDISQUE_NOM}}</p>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if mannequin.MANNEQUIN_TAILLE}}
+    <div class="padding-T_5">
+      <p class="display_I"><strong>Profession : </strong>Mannequin {{#if mannequinAgence}}pour{{/if }} {{#each mannequinAgence}}<p id="virguleManAge" class="display_I">,</p>{{this.AGENCE_NOM}}{{/each}}</p>
+      <p><strong>Principal(aux) défilé(s) :</strong></p>
+      <div class="margin-L_10">
+        {{#each mannequinDefile}}
+          {{this.DEFILE_LIEU}} ({{formatDate this.DEFILE_DATE 'MMMM YYYY'}}) de
+          {{>infoBulle}}
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if mariage}}
+  <div class="padding-T_5">
+    <strong>Mariages(s) : </strong>
+    <div class="margin-L_10">
+      {{#each mariage}}
+        <p>
+          {{>infoBulle}}
+           ({{formatDate this.DATE_EVENEMENT 'MMMM YYYY'}}{{#if this.MARIAGE_FIN}}-->{{formatDate this.MARIAGE_FIN 'MMMM YYYY'}}{{/if}}) <strong>lieu : </strong>{{this.MARIAGE_LIEU}}{{#if this.MARIAGE_MOTIFFIN}}, <strong>raison de fin : </strong>{{this.MARIAGE_MOTIFFIN}}{{/if}}</p>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+  {{#if liaison}}
+  <div class="padding-T_5">
+    <strong>Liaison(s) : </strong>
+    <div class="margin-L_10">
+      {{#each liaison}}
+        <p>{{>infoBulle}} ({{formatDate this.DATE_EVENEMENT 'MMMM YYYY'}}) {{#if this.MARIAGE_MOTIFFIN}}, <strong>raison de fin : </strong>{{this.LIAISON_MOTIFFIN}}{{/if}}</p>
+      {{/each}}
+    </div>
+  </div>
+  {{/if}}
+  {{#if vip.0.VIP_TEXTE}}
+  <p class="padding-T_5"><strong>Qui suis-je ? : </strong>{{vip.0.VIP_TEXTE}}</p>
+  {{/if}}
+
+  <!--Photos-->
+  <div class="lightBoxRow color_W">
+    {{#each photo}}
+      <div class="lightBoxColumn display_IB">
+        <img onclick="openlightBoxModal();currentSlide({{inc @index}})" class="hover-shadow lightBoxCursor margin-L_10" alt="photo" src="/images/vip/{{this.PHOTO_ADRESSE}}" height="120">
+      </div>
+    {{/each}}
+  </div>
+
+  <div id="mylightBoxModal" class="lightBoxModal color_W">
+    <span class="lightBoxClose lightBoxCursor" onclick="lightBoxCloselightBoxModal()">&times;</span>
+    <div class="lightBoxModal-content">
+      {{#each photo}}
+        <div class="lightBoxMySlides text-A_C">
+          <img lass="lightBoxMyImage" src="/images/vip/{{this.PHOTO_ADRESSE}}" alt="{{this.PHOTO_COMMENTAIRE}}">
+          <div class="numbertext">{{inc @index}}/{{../nbPhoto}}</div>
+          <div class="">{{this.PHOTO_COMMENTAIRE}}</div>
+        </div>
+      {{/each}}
+      <a class="lightBoxPrev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="lightBoxNext" onclick="plusSlides(1)">&#10095;</a>
+
+      <div class="caption-container color_W">
+        <p id="caption"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/lightBox.js"></script>
+<script>
+  document.getElementById("virguleManAge").style.display="none";
+</script>

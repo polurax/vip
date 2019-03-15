@@ -1,0 +1,108 @@
+<div>
+  <div class="border width_450 height_390 float_R">
+    {{#each liste}}
+      {{#mod @index 12 0}}<div id="liste{{math @index "/" 12}}" class="liste">{{/mod}}
+      <a href="/album/{{this.VIP_NUMERO}}"><img src="/images/vip/{{this.PHOTO_ADRESSE}}" alt="photo" width="100" height="120" class="padding-T_5"></a>
+      {{#divFinAlbum ../liste @index 12 11}}</div>{{/divFinAlbum}}
+    {{/each}}
+    <div class="text-align_center padding-T_5 padding-B_5">
+      <button type="button" name="button" class="display_IB" onclick="prem()"><<</button>
+      <button type="button" name="button" class="display_IB" onclick="prec()"><</button>
+      <p id="numPageAlbum" class="display_IB text-A_R">1</p>
+      <p class="display_IB">/</p>
+      <p id="nbPageAlbum" class="display_IB text-A_L">{{sizeAlbum liste 12}}</p>
+      <button type="button" name="button" class="display_IB" onclick="suiv()">></button>
+      <button type="button" name="button" class="display_IB" onclick="dern()">>></button>
+    </div>
+  </div>
+  {{#if vip}}
+    <div class="width_50pc">
+      <p>{{vip.0.VIP_PRENOM}} {{vip.0.VIP_NOM}}</p>
+      <button type="button" name="button" onclick="precP()" id="precP" class="display_IB vertical-A_T margin-T_50"><</button>
+      {{#each vip}}
+        <img id="photo{{@index}}" class="photo display_IB" src="/images/vip/{{this.PHOTO_ADRESSE}}" alt="" width="300">
+      {{/each}}
+      <button type="button" name="button" onclick="suivP()" id="suivP" class="display_IB vertical-A_T margin-T_50">></button>
+      <p class="text-A_L margin-L_3 background-C_W position-R_T8 width_84">commentaire</p>
+      {{#each vip}}
+        <p id="commentaire{{@index}}" class="commentaire border padding_5">{{this.PHOTO_COMMENTAIRE}}</p>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+<script type="text/javascript">
+  let liste=document.getElementsByClassName("liste");
+  let num=document.getElementById("numPageAlbum");
+  let nb=document.getElementById("nbPageAlbum");
+  let photos=document.getElementsByClassName("photo");
+  let commentaires=document.getElementsByClassName("commentaire");
+  let numPhoto=1;
+  let varprecP=document.getElementById("precP");
+  let varsuivP=document.getElementById("suivP");
+
+  page(1);
+  photo(1);
+
+  function prem(){
+    num.innerText=1;
+    page(num.innerText);
+  }
+  function prec(){
+    if(num.innerText>1){
+      num.innerText--;
+      page(num.innerText);
+    }
+  }
+  function suiv(){
+    if(num.innerText<nb.innerText){
+      num.innerText++;
+      page(num.innerText);
+    }
+  }
+  function dern(){
+    num.innerText=nb.innerText;
+    page(num.innerText);
+  }
+
+  function page(num){
+    num--;
+    for (var i=0; i<liste.length; i++) {
+      liste[i].style.display="none";
+    }
+    document.getElementById("liste"+num).style.display="block";
+  }
+
+  function precP(){
+    if(numPhoto>1){
+      numPhoto--;
+      photo(numPhoto);
+    }
+  }
+  function suivP(){
+    if(numPhoto<photos.length){
+      numPhoto++;
+      photo(numPhoto);
+    }
+  }
+
+  function photo(num){
+    if(numPhoto==1){
+      varprecP.style.visibility="hidden";
+    }else{
+      varprecP.style.visibility="visible";
+    }
+    if(numPhoto==photos.length){
+      varsuivP.style.visibility="hidden";
+    }else{
+      varsuivP.style.visibility="visible";
+    }
+    num--;
+    for (var i=0; i<photos.length; i++) {
+      photos[i].style.display="none";
+      commentaires[i].style.display="none";
+    }
+    document.getElementById("photo"+num).style.display="inline-block";
+    document.getElementById("commentaire"+num).style.display="block";
+  }
+</script>

@@ -1,0 +1,250 @@
+p{padding: 0px; margin:0px;}
+
+.display_IB{display: inline-block;}
+.display_B{display: block;}
+.display_I{display: inline;}
+.display_N{display: none;}
+
+.position-R_T8{position: relative; top:8px;}
+.position_R{position: relative;}
+.position_A{position: absolute;}
+.top_0{top:0px;}
+.right_0{right: 0px;}
+.bottom_0{bottom: 0px;}
+
+
+.margin-L_3{margin-left:3px;}
+.margin-L_10{margin-left:10px;}
+.margin-R_10{margin-right:10px;}
+.margin-T_10{margin-top:10px;}
+.margin-B_10{margin-bottom:10px;}
+.margin-L_5{margin-left:5px;}
+.margin-T_5{margin-top:5px;}
+.margin-T_50{margin-top:50px;}
+
+.padding-B_5{padding-bottom:5px;}
+.padding-T_5{padding-top:5px;}
+.padding-L_5{padding-left:5px;}
+.padding_5{padding:5px;}
+
+.width_43{width: 43px;}
+.width_84{width: 84px;}
+.width_50{width: 50px;}
+.width_100{width: 100px;}
+.width_150{width: 150px;}
+.width_200{width: 200px;}
+.width_450{width: 450px;}
+
+.width_50pc{width: 49%;}
+.width_75pc{width: 75%;}
+.width_100pc{width: 100%;}
+
+.height_390{height: 390px;}
+
+.border{border: solid 1px black;}
+.border-R_10{border-radius:10px}
+.border-R_5{border-radius:5px}
+
+.float_L{float:left;}
+.float_R{float:right;}
+
+.color_W{color:white;}
+.color_B{color:black;}
+.background-C_B{background-color: black;}
+.background-C_W{background-color: white;}
+.background-C_LG{background-color: rgb(230,230,230);}
+
+.vertical-A_T{vertical-align:top;}
+.vertical-A_C{vertical-align:center;}
+.text-A_C{text-align: center;}
+.text-A_L{text-align: left;}
+.text-A_R{text-align: right;}
+.text-D_U{text-decoration: underline;}
+.font-S_20{font-size: 20px;}
+
+/*/////infoBulle///////*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 320px;
+  height: 150px;
+  background-color: white;
+  border:solid 1px black;
+  color: black;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 0px;
+  margin-right: 0px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+/*-----infoBulle-----*/
+
+/*/////lightBox///////*/
+
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.lightBoxRow > .lightBoxColumn {
+  padding: 0 8px;
+}
+
+.lightBoxRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.lightBoxColumn {
+  float: left;
+}
+
+/* The lightBoxModal (background) */
+.lightBoxModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* lightBoxModal Content */
+.lightBoxModal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+}
+
+/* The lightBoxClose Button */
+.lightBoxClose {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.lightBoxClose:hover,
+.lightBoxClose:focus {
+  color: #999;
+  text-decoration: none;
+  lightBoxCursor: pointer;
+}
+
+.lightBoxMySlides {
+  display: none;
+  width: 100%;
+}
+
+.lightBoxMyImage {
+  margin:auto;
+}
+
+.lightBoxCursor {
+  lightBoxCursor: pointer;
+}
+
+/* lightBoxNext & lightBoxPrevious buttons */
+.lightBoxPrev,
+.lightBoxNext {
+  lightBoxCursor: pointer;
+  position: absolute;
+  top: 250px;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "lightBoxNext button" to the right */
+.lightBoxNext {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.lightBoxPrev:hover,
+.lightBoxNext:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.lightBoxNumbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.lightBoxDemo {
+  opacity: 0.6;
+}
+
+.lightBoxActive,
+.lightBoxDemo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*-----lightBox-----*/

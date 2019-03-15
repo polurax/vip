@@ -1,0 +1,10 @@
+{{>choixLettre}}
+
+<div>
+{{#each vip}}
+<a style="padding:0px 20px; display:inline-block;" href="./fiche/{{this.VIP_NUMERO}}">
+  <img height="120" style="display:block; margin-bottom:10px;" alt="photo" src="/images/vip/{{this.PHOTO_ADRESSE}}">
+  <p>{{this.VIP_NOM}} {{this.VIP_PRENOM}}</p>
+</a>
+{{/each}}
+</div>

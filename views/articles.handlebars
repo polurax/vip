@@ -1,0 +1,29 @@
+<div class="display_IB position_R">
+  {{#if selection}}
+  <h2>{{article.0.VIP_PRENOM}} {{article.0.VIP_NOM}}</h2>
+  {{/if}}
+  {{#if nonselection}}
+  <h2>Articles récents</h2>
+  {{/if}}
+  <div class="text-A_L width_75pc">
+    {{#each article}}
+      <p class="position-R_T8 margin-L_5 background-C_W width_43">Article</p>
+      <div class="border padding_5">
+        <p class="padding-B_5 padding-T_5 text-D_U">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</p>
+        <p>{{this.ARTICLE_RESUME}}</p>
+        <div class="width_100pc margin-T_5 background-C_LG">
+          <p class="width_50pc display_IB">[Ajouté le {{formatDate this.ARTICLE_DATE_INSERT 'dddd D MMMM YYYY'}}]</p>
+          <p class="width_50pc text-A_R text-D_U display_IB"><a href="/repertoire/fiche/{{this.VIP_NUMERO}}" class="color_B width_50">voir sa fiche</a></p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <div class="border border-R_5 width_200 position_A top_0 right_0">
+    <p class="color_W background-C_B font-S_20">VIPs</p>
+    <div class="">
+      {{#each vip}}
+        <p><a href="/articles/{{this.VIP_NUMERO}}" class="color_B text-D_U">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</a></p>
+      {{/each}}
+    </div>
+  </div>
+</div>
