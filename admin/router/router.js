@@ -1,22 +1,22 @@
 let HomeController = require('./../controllers/HomeController');
 let VipController = require('./../controllers/VipController');
 let AdminController = require('./../controllers/AdminController');
+let PhotoController = require('./../controllers/PhotoController');
 
 
 // Routes
 module.exports = function(app){
 
 // Main Routes
-    app.get('/', HomeController.Index);
-    app.get('/accueil', HomeController.Index);
-
     app.all('/admin', AdminController.Index);
+    app.all('/photo', PhotoController.Photo);
+
 
 
     app.all('/AdministrationVip',AdministrationVipController.Index);
 
 // tout le reste
-    app.get('*', HomeController.NotFound);
-    app.post('*', HomeController.NotFound);
+    app.get('*', HomeController.Index);
+    app.post('*', HomeController.Index);
 
 };
