@@ -1,5 +1,5 @@
 
-let model = require("../models/admin.js");
+let model = require("../models/administrationVip.js");
 let async = require("async");
 
 let fonctions = require("../functionsNode");
@@ -11,6 +11,42 @@ module.exports.Index = function(request, response){
    response.title = 'Gestion des VIPs';
    response.render('vipAdministration', response);
  };
+
+
+
+ module.exports.AjouterVip = function(request, response){
+    response.title = 'Gestion des VIPs';
+
+    async.parallel([
+      function(callback){
+        model.getNationalite(function(err, result){callback(null,result)});
+      },
+    ],
+     function(err,result){
+        if (err) {
+            console.log(err);
+            return;
+        }
+     response.getNationalite = result[0];
+
+       response.render('AjouterVip', response); // appel la vue Handlebars qui va afficher le résultat
+   } );
+
+  };
+
+
+
+module.exports.ModifierVip = function(request, response){
+   response.title = 'Gestion des VIPs';
+   response.render('ModifierVip', response);
+ };
+
+
+
+module.exports.SupprimerVip = function(request, response){
+  response.title = 'Gestion des VIPs';
+  response.render('SupprimerVip', response);
+};
 
 
 

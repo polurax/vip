@@ -1,5 +1,5 @@
 let HomeController = require('./../controllers/HomeController');
-let VipController = require('./../controllers/VipController');
+let AdministrationVipController = require('./../controllers/AdministrationVipController');
 let AdminController = require('./../controllers/AdminController');
 let PhotoController = require('./../controllers/PhotoController');
 
@@ -14,6 +14,10 @@ module.exports = function(app){
 
 
     app.all('/AdministrationVip',AdministrationVipController.Index);
+    app.all('/AjouterVip',AdministrationVipController.AjouterVip);
+    app.all('/ModifierVip',AdministrationVipController.ModifierVip);
+    app.all('/SupprimerVip',AdministrationVipController.SupprimerVip);
+
 
 // tout le reste
     app.get('*', HomeController.Index);
