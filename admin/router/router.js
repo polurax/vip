@@ -10,7 +10,7 @@ module.exports = function(app){
     app.get('/', HomeController.Index);
     app.get('/accueil', HomeController.Index);
 
-    app.get('/admin', AdminController.Index);
+    app.all('/admin', AdminController.Index);
 
 // tout le reste
     app.get('*', HomeController.NotFound);

@@ -1,5 +1,5 @@
 
-let model = require("../models/vip.js");
+let model = require("../models/admin.js");
 let async = require("async");
 
 let fonctions = require("../functionsNode");

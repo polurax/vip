@@ -3,7 +3,10 @@ let express         = require('express'),
     cookieParser    = require('cookie-parser'),
     bodyParser      = require('body-parser'), //pour récupérer les résultats des post
     http            = require('http'),
-    path            = require('path');
+    path            = require('path'),
+    Cryptr          = require('cryptr');
+
+    let cryptr = new Cryptr('MaSuperCléDeChiffrementDeouF');
 
 let app = express();
 
