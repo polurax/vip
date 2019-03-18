@@ -12,6 +12,9 @@ module.exports = function(app){
 
     app.all('/admin', AdminController.Index);
 
+
+    app.all('/AdministrationVip',AdministrationVipController.Index);
+
 // tout le reste
     app.get('*', HomeController.NotFound);
     app.post('*', HomeController.NotFound);

@@ -4,8 +4,17 @@ let async = require("async");
 
 let fonctions = require("../functionsNode");
 
-// ///////////////////////// R E P E R T O I R E    D E S     S T A R S
+// ///////////////////////// G E S T I O N     D E S    V I P S
 
+
+module.exports.Index = function(request, response){
+   response.title = 'Gestion des VIPs';
+   response.render('vipAdministration', response);
+ };
+
+
+
+/*
 module.exports.Repertoire = function(request, response){
    response.title = 'Répertoire des stars';
    model.lettreNomVip(function(err, result){  // appel le module test qui exécute la requete SQL
@@ -121,3 +130,4 @@ module.exports.Repertoire = function(request, response){
         }
       );
     };
+*/
