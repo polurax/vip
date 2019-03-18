@@ -65,6 +65,21 @@ p{padding: 0px; margin:0px;}
 .text-D_U{text-decoration: underline;}
 .font-S_20{font-size: 20px;}
 
+#menuV{
+  background-color: black;
+  width:120px;
+  border-radius: 5px;}
+#imgMenuV{
+  padding: 8px;
+}
+.liMenuV{
+  border-top: solid 1px white;
+  color: white;
+  font-weight: bold;
+  list-style-type: none;
+  padding: 8px;
+}
+
 /*/////infoBulle///////*/
 .tooltip {
   position: relative;

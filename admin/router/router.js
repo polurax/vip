@@ -9,7 +9,8 @@ module.exports = function(app){
 
 // Main Routes
     app.all('/admin', AdminController.Index);
-    app.all('/photo', PhotoController.Photo);
+    app.all('/ajoutphoto', PhotoController.AjoutPhoto);
+    app.all('/supprrimerphoto', PhotoController.SupprrimerPhoto);
 
 
 // tout le reste
