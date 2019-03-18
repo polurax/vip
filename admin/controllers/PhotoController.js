@@ -2,7 +2,7 @@ let async = require("async");
 let model = require("../models/photo.js");
 // ////////////////////// L I S T E R     A L B U M S
 
-module.exports.Photo = function(request, response){
+module.exports.AjoutPhoto = function(request, response){
    response.title = 'Ajout photo';
    async.parallel([
      /*function(callback){
@@ -14,7 +14,7 @@ module.exports.Photo = function(request, response){
            console.log(err);
            return;
        }
-       response.render('photo', response);
+       response.render('ajoutphoto', response);
       /*response.liste = result[0];
       let logOk=false;
       result[0].forEach(function functionName(element) {
@@ -28,6 +28,24 @@ module.exports.Photo = function(request, response){
         response.render('home', response);
       }
 */
+    }
+  );
+};
+
+module.exports.SupprrimerPhoto = function(request, response){
+   response.title = 'Ajout photo';
+   async.parallel([
+     /*function(callback){
+       model.log(function(err, result){callback(null,result)});
+     },*/
+   ],
+    function(err,result){
+       if (err) {
+           console.log(err);
+           return;
+       }
+       response.render('ajoutphoto', response);
+
     }
   );
 };
