@@ -14,10 +14,10 @@ module.exports = function(app){
 
 
 
-    app.all('/AdministrationVip',AdministrationVipController.Index);
-    app.all('/AjouterVip',AdministrationVipController.AjouterVip);
-    app.all('/ModifierVip',AdministrationVipController.ModifierVip);
-    app.all('/SupprimerVip',AdministrationVipController.SupprimerVip);
+    app.all('/administrationVip',AdministrationVipController.Index);
+    app.all('/ajouterVip',AdministrationVipController.AjouterVip);
+    app.all('/modifierVip',AdministrationVipController.ModifierVip);
+    app.all('/supprimerVip',AdministrationVipController.SupprimerVip);
 
 
 // tout le reste
