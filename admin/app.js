@@ -5,6 +5,8 @@ let express         = require('express'),
     http            = require('http'),
     path            = require('path'),
     Cryptr          = require('cryptr');
+    formidable      = require('formidable'),
+    util            = require('util');
 
     let cryptr = new Cryptr('MaSuperCléDeChiffrementDeouF');
 

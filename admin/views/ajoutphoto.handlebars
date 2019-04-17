@@ -1,3 +1,35 @@
 {{>debBody}}
 {{>menuphoto}}
+<div class="">
+  <p class="position-R_T8 margin-L_5 background-C_W width_120">Ajout d'une photo</p>
+  <div class="border padding_5">
+    <form class="" action="/ajoutphoto/upload" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td><p>Nom du vip :</p></td>
+          <td><select name="vip" required>
+            {{#each vip}}
+              <option value="{{this.VIP_NUMERO}}">{{this.VIP_PRENOM}} {{this.VIP_NOM}}</option>
+            {{/each}}
+          </select></td>
+        </tr>
+        <tr>
+          <td><p>Adresse de la photo :</p></td>
+          <td><input id="photo" type="file" name="photo" value="photo" required></td>
+        </tr>
+        <tr>
+          <td><p>Titre :</p></td>
+          <td><input type="text" name="titre" value="" required></td>
+        </tr>
+        <tr>
+          <td><p>Un petit commentaire ?</p></td>
+          <td><input type="text" name="commentaire" value="" required></td>
+        </tr>
+      </table>
+      <input type="submit" name="" value="Ajouter">
+      <input type="reset" name="" value="Annuler">
+    </form>
+  </div>
+</div>
+
 {{>finBody}}
