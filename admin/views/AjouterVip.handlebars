@@ -1,0 +1,203 @@
+{{>debBody}}
+{{>menuVip}}
+
+
+<div class="text-A_L width_75pc">
+    <p class="position-R_T8 margin-L_5 background-C_W width_43">Ajout VIPs</p>
+
+    <form class="FormulaireAjoutVip" action="AjouterVip" method="post">
+      <div class="border padding_5">
+        <tbody>
+          <table>
+            <tr>
+              <td>Nom* :</td>
+              <td> <input type="text" name="Nom" value="" style="width:150px;" maxlength="20"> </td>
+            </tr>
+
+
+            <tr>
+              <td>Prénom* :</td>
+              <td> <input type="text" name="Prenom" value="" style="width:150px;" maxlength="20"> </td>
+            </tr>
+
+
+            <tr>
+              <td>Sexe :</td>
+              <td>
+                <select class="Sexe" name="">
+                  <option value="Masculin">Masculin</option>
+                  <option value="Féminin">Féminin</option>
+                </select>
+               </td>
+            </tr>
+
+
+            <tr>
+              <td>Date de naissance :</td>
+              <td> <input type="date" name="dateDeNaissance" value="jj/mm/aaaa"> </td>
+            </tr>
+
+
+            <tr>
+              <td>Nationalité :</td>
+              <td>
+                <select class="Nationalité" name="Nationalité">
+                  {{#each getNationalite}}
+                    <option value="{{this.NATIONALITE_NUMERO}}">{{this.NATIONALITE_NOM}}</option>
+                  {{/each}}
+                </select>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>Commentaire :</td>
+              <td> <input type="text" name="Prenom" value="" style="width:300px;" maxlength="800"> </td>
+            </tr>
+
+
+            <tr>
+              <td>Sélectionner l'image :</td>
+              <td>
+                <input type="file" name="photo" value="" >
+
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>Profession :</td>
+              <td class="checkboxSelect">
+                <input type="checkbox" name="realisateur" value="realisateur" onchange="showHide('filmRealisation');"><p>Réalisateur</p>
+                <input type="checkbox" name="chanteur" value="chanteur" onchange="showHide('album');showHide('maisonDisque');"><p>Chanteur</p>
+                <input type="checkbox" name="acteur" value="acteur" onchange="showHide('filmJoue');"><p>Acteur</p>
+                <input type="checkbox" name="couturier" value="coutirier" onchange="showHide('defileCouturier');"><p>Couturier</p>
+                <input type="checkbox" name="mannequin" value="mannequin" onchange="showHide('defileMannequin');"><p>Mannequin</p>
+
+
+
+
+            <div id="filmRealisation" class="ProfessionVips">
+              <label>Films réalisés :
+                <select class="filmRealise" name="filmRealise">
+                  {{#each getFilm}}
+                    <option value="{{this.FILM_NUMERO}}">{{this.FILM_TITRE}} ({{formatDate this.FILM_DATE 'dddd D MMMM YYYY'}})</option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+
+
+            <div id="album" class="ProfessionVips">
+              <label>Albums :
+                <select class="Album" name="Album">
+                  {{#each getAlbum}}
+                    <option value="{{this.ALBUM_NUMERO}}">{{this.ALBUM_TITRE}} ({{formatDate this.ALBUM_DATE 'dddd D MMMM YYYY'}})</option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+
+
+            <div id="maisonDisque" class="ProfessionVips">
+              <label>Maison de disque :
+                <select class="filmRealise" name="filmRealise">
+                  {{#each getMaisonDeDisque}}
+                    <option value="{{this.MAISONDISQUE_NUMERO}}">{{this.MAISONDISQUE_NOM}}</option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+
+
+            <div id="filmJoue" class="ProfessionVips">
+              <label>Films joué:
+                <select class="filmRealise" name="filmRealise">
+                  {{#each getFilm}}
+                    <option value="{{this.FILM_NUMERO}}">{{this.FILM_TITRE}} ({{formatDate this.FILM_DATEREALISATION 'dddd D MMMM YYYY'}})</option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+
+
+            <div id="defileCouturier" class="ProfessionVips">
+              <label>Défilés (couturier) :
+                <select class="defiles" name="defiles">
+                  {{#each getDefiles}}
+                    <option value="{{this.DEFELI_NUMERO}}">{{this.DEFILE_LIEU}} ({{formatDate this.DEFILE_DATE 'dddd D MMMM YYYY'}}) </option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+
+
+            <div id="defileMannequin" class="ProfessionVips">
+              <label>Défilés (mannequin) :
+                <select class="defiles" name="defiles">
+                  {{#each getDefiles}}
+                    <option value="{{this.DEFELI_NUMERO}}">{{this.DEFILE_LIEU}}  ({{formatDate this.DEFILE_DATE 'dddd D MMMM YYYY'}}) </option>
+                  {{/each}}
+                </select>
+              </label>
+            </div>
+            </td>
+          </tr>
+
+
+            <tr>
+              <td>Liaison :</td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Raison fin de liaison :</td>
+              <td></td>
+            </tr>
+
+
+          </table>
+        </tbody>
+      </div>
+    </form>
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+  window.onload = hideAll();
+
+  function hideAll(){
+    let filmRealisation = document.getElementById('filmRealisation');
+    let filmJouer = document.getElementById('filmJoue');
+    let defileMannequin = document.getElementById('defileMannequin');
+    let defileCouturier= document.getElementById('defileCouturier');
+    let maisonDisque = document.getElementById('maisonDisque');
+    let album = document.getElementById('album');
+
+    filmRealisation.style.display = "none";
+    filmJouer.style.display = "none";
+    defileCouturier.style.display="none";
+    defileMannequin.style.display="none";
+    maisonDisque.style.display="none";
+    album.style.display="none";
+  }
+
+  function showHide(str){
+    let showBlock = document.getElementById(str);
+    if(showBlock.style.display=="none"){
+          showBlock.style.display="block";
+    }else{
+          showBlock.style.display="none";
+    }
+
+  }
+
+
+</script>
+
+
+{{>finBody}}

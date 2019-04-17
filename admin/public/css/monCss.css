@@ -81,6 +81,7 @@ p{padding: 0px; margin:0px;}
   padding: 8px;
 }
 
+
 /*/////infoBulle///////*/
 .tooltip {
   position: relative;
@@ -267,3 +268,20 @@ img.hover-shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 /*-----lightBox-----*/
+
+
+
+.checkboxSelect p, .checkboxSelect input{
+  display : inline-block;
+}
+
+
+
+
+.FormulaireAjoutVip td{
+  padding-top:20px;
+}
+
+.ProfessionVips{
+  padding-top:15px;
+}
