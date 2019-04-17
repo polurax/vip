@@ -20,12 +20,12 @@ module.exports.Index = function(request, response){
            return;
        }
       response.liste = result[0];
-      let logOk=true;/*let logOk=false;
+      let logOk=false;
       result[0].forEach(function functionName(element) {
-        if(login==element.LOGIN && pass==element.PASSWD){
+        if(login==element.LOGIN && pass==cryptr.decrypt(element.PASSWD)){
           logOk=true;
         }
-      });*/
+      });
       if(logOk){
         response.render('admin', response);
       }else{
