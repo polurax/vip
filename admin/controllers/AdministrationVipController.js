@@ -1,20 +1,29 @@
 
 let model = require("../models/administrationVip.js");
 let async = require("async");
-
 let fonctions = require("../functionsNode");
-
+let LocalStorage = require('node-localstorage').LocalStorage;
+let localStorage = new LocalStorage('./scratch');
 // ///////////////////////// G E S T I O N     D E S    V I P S
 
 
 module.exports.Index = function(request, response){
    response.title = 'Gestion des VIPs';
+
+   if(localStorage.getItem("log") === "false"){
+     console.log(localStorage.getItem("log"));
+     response.render('home', response);
+   }
    response.render('vipAdministration', response);
  };
 
 
 
  module.exports.AjouterVip = function(request, response){
+   if(localStorage.getItem("log") === "false"){
+     console.log(localStorage.getItem("log"));
+     response.render('home', response);
+   }
     response.title = 'Gestion des VIPs';
 
     async.parallel([
@@ -57,6 +66,10 @@ module.exports.Index = function(request, response){
 
 
 module.exports.ModifierVip = function(request, response){
+  if(localStorage.getItem("log") === "false"){
+    console.log(localStorage.getItem("log"));
+    response.render('home', response);
+  }
    response.title = 'Gestion des VIPs';
    response.render('ModifierVip', response);
  };
@@ -64,6 +77,10 @@ module.exports.ModifierVip = function(request, response){
 
 
 module.exports.SupprimerVip = function(request, response){
+  if(localStorage.getItem("log") === "false"){
+    console.log(localStorage.getItem("log"));
+    response.render('home', response);
+  }
   response.title = 'Gestion des VIPs';
   response.render('SupprimerVip', response);
 };

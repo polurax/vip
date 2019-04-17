@@ -1,7 +1,8 @@
 let async = require("async");
 let model = require("../models/admin.js");
 let Cryptr= require('cryptr');
-
+let LocalStorage = require('node-localstorage').LocalStorage;
+let localStorage = new LocalStorage('./scratch');
 let cryptr = new Cryptr('MaSuperCléDeChiffrementDeouF');
 // ////////////////////// L I S T E R     A L B U M S
 
@@ -24,6 +25,7 @@ module.exports.Index = function(request, response){
       result[0].forEach(function functionName(element) {
         if(login==element.LOGIN && pass==cryptr.decrypt(element.PASSWD)){
           logOk=true;
+          localStorage.setItem('log', true);
         }
       });
       if(logOk){

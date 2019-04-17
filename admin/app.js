@@ -1,12 +1,18 @@
-let express         = require('express'),
-    session         = require('express-session'),
-    cookieParser    = require('cookie-parser'),
-    bodyParser      = require('body-parser'), //pour récupérer les résultats des post
-    http            = require('http'),
-    path            = require('path'),
-    Cryptr          = require('cryptr');
-    formidable      = require('formidable'),
-    util            = require('util');
+let    express         = require('express');
+let    session         = require('express-session');
+let    cookieParser    = require('cookie-parser');
+let    bodyParser      = require('body-parser'); //pour récupérer les résultats des post
+let    http            = require('http');
+let    path            = require('path');
+let    Cryptr          = require('cryptr');
+
+let    util            = require('util');
+
+
+    let LocalStorage = require('node-localstorage').LocalStorage;
+    let localStorage = new LocalStorage('./scratch');
+    localStorage.setItem("log", false);
+
 
     let cryptr = new Cryptr('MaSuperCléDeChiffrementDeouF');
 
